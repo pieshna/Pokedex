@@ -1,11 +1,12 @@
-import { Outlet } from "react-router-dom"
-
+import { Outlet } from 'react-router-dom'
 
 const Navigation = () => {
   return (
     <>
-    <h1>Navegacion</h1>
-    <Outlet/>
+      <div className="p-4 bg-slate-600">
+        <p className="text-center text-xl text-white">Pokedex</p>
+      </div>
+      <Outlet />
     </>
   )
 }
