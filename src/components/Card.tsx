@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { resultsPokemon } from '../interfaces/card'
 import { Pokedex } from '../interfaces/pokemon'
+import { Link } from 'react-router-dom'
 
 const Card = ({ name, url }: resultsPokemon) => {
   const [pokeData, setPokeData] = useState<Pokedex>()
@@ -22,15 +23,19 @@ const Card = ({ name, url }: resultsPokemon) => {
 
   return (
     <>
-      <div className="rounded overflow-hidden shadow-lg m-4 h-52 cursor-pointer">
-        <p className="p-2 absolute text-xl text-gray-600">#{pokeData?.id}</p>
-        <div className="flex justify-center h-40">
-          <img src={setImage()} alt={name} />
+      <Link to={`/pokemon/${pokeData?.id}`}>
+        <div className="rounded overflow-hidden shadow-lg m-4 h-52 cursor-pointer">
+          <p className="p-2 absolute text-xl text-gray-600">#{pokeData?.id}</p>
+          <div className="flex justify-center h-40">
+            <img src={setImage()} alt={name} />
+          </div>
+          <div className="mt-2 border">
+            <p className="text-gray-700 text-xl text-center">
+              {pokeData?.name}
+            </p>
+          </div>
         </div>
-        <div className="mt-2 border">
-          <p className="text-gray-700 text-xl text-center">{pokeData?.name}</p>
-        </div>
-      </div>
+      </Link>
     </>
   )
 }
